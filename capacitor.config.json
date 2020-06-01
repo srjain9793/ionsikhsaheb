@@ -1,9 +1,10 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "io.shailesh.sikh",
   "appName": "myApp",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "linuxAndroidStudioPath": "/snap/bin/android-studio",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
