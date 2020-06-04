@@ -1,23 +1,26 @@
 <ion-header>
   <ion-toolbar class="new-background-color">
-    <ion-title>search</ion-title>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- Default Searchbar -->
-  <ion-content *ngIf="showSearchWidget" style="text-align: center;">
-    <ion-input type="text" placeholder="Enter Searchphrase" [(ngModel)]="searchPhrase"></ion-input>
-    <ion-button (click)="search()">Search</ion-button>
+  <ion-content class="box" *ngIf="showSearchWidget" style="text-align: center;">
+    <ion-input class="searchbox" type="text" placeholder="Enter Searchphrase" [(ngModel)]="searchPhrase"></ion-input>
+    <ion-button (click)="search()" class="search_cta">Search</ion-button>
   </ion-content>
-  <ion-content *ngIf="!showSearchWidget" style="text-align: center;">
+
+  <ion-content *ngIf="!showSearchWidget" class="content" style="text-align: center;">
+    <ion-col size="8" size-sm>
     <ion-text-center>
       <!-- {{searchResult | json}} -->
       <p style="text-align: center;" *ngFor="let l of searchResult">
         {{l}}
       </p>
     </ion-text-center>
-    <ion-button (click)="back()">back to search</ion-button>
+  </ion-col>
+    <ion-button (click)="back()" class="search_cta">back to search</ion-button>
   </ion-content>
 
 </ion-content>
