@@ -10,18 +10,24 @@ import { GetDataService } from '../services/get-data.service'
 export class HomePage implements OnInit {
 
   homeText;
+  homeContentIndex = -1;
   constructor(private getDataService: GetDataService) { }
 
   ngOnInit() {
+    this.getContent();
+  }
+
+  doRefresh(event) {
+    console.log("-->", event);
+    this.getContent();
+    event.target.complete();
+  }
+
+  async getContent() {
+    this.homeContentIndex++;
     this.homeText = [];
     console.log("home text", this.homeText);
-    let data = (this.getDataService.getData());
-    data.div.forEach((d) => {
-      d.lines.forEach((l) => {
-        this.homeText.push(l['punjabi-text']);
-      });
-    });
-    console.log("data.heading == ", data.heading);
+    this.homeText = await this.getDataService.getHomeContent(this.homeContentIndex, "chantsaasakivaar");
   }
 
 }

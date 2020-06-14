@@ -5,5 +5,25 @@
 </ion-header>
 
 <ion-content>
+  <ion-content *ngIf="!baaniContent" style="text-align: center">
 
+    <p *ngFor=" let baani of baanisList" (click)="getContent(baani.filename)">
+      {{baani.heading}}
+    </p>
+
+  </ion-content>
+  <ion-content *ngIf="baaniContent" style="text-align: center">
+
+    <ion-col size="8" size-sm>
+      <ion-text-center>
+        <!-- {{searchResult | json}} -->
+        <span style="text-align: center;" *ngFor="let s of baaniContent.div">
+          <p>{{s.heading}}</p>
+          <p *ngFor="let l of s.lines">{{l["punjabi-text"]}}</p>
+        </span>
+      </ion-text-center>
+    </ion-col>
+    <ion-button (click)="back()" class="search_cta">back to search</ion-button>
+
+  </ion-content>
 </ion-content>
