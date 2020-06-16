@@ -4,11 +4,11 @@
     text-align: center;
 }
 .searchbox{
-    width: 100%;
+    width: calc(100% - 10px);
     border: 1px solid #e2e0e0;
     border-right: none;
     margin-top: 10px;
-    height: 50px;
+    height: 60px;
     border-radius: 50px;
     outline: none;
     color: #000; 
@@ -24,6 +24,7 @@
 .search_cta{
     --background: #44270A;
     --color: #fff;
+    --border-radius: 50%;
 }
 ion-app.android {
     font-family: TradeGothic !important;

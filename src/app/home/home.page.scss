@@ -3,3 +3,18 @@
     --color: #fff;
     text-align: center;
 }
+.bg_image {
+    background: url('/assets/imgs/Khanda.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
+ion-app.android {
+    font-family: TradeGothic !important;
+    font-size: 15px;
+    }
+ion-app.ios {
+        font-family: TradeGothic !important;
+        font-size: 15px;
+}
+
+

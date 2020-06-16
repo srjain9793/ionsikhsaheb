@@ -4,20 +4,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg_image">
+
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
       refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 
-</ion-content>
-
-<ion-content>
 
   <ion-text-center>
-    <p style="text-align: center;" *ngFor="let l of homeText">
+    <p style="text-align: center; margin-top: 25%; padding-left: 2%; padding-right: 2%;" *ngFor="let l of homeText">
       {{l}}
     </p>
   </ion-text-center>
+  
 </ion-content>
+
+
