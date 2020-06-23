@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public loadingController: LoadingController) {
     this.http = http;
     // this.readJson("");
+  }
+  loading: any;
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      // duration: 2000
+    });
+    await this.loading.present();
+
+    // const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
   async getHomeContent(homeContentIndex, scripture) {
@@ -81,14 +95,37 @@ export class GetDataService {
     return filterData;
   }
 
-  async getBaanisContent(baani?: any) {
+  async getBaanisContent(baani?: any, page?: number) {
     if (baani) {
-
-      return this.readJson(baani);
+      await this.presentLoading();
+      let data = await this.getPages(baani, page);
+      this.loading.dismiss();
+      return data;
 
     } else {
       return await this.readJson("avail_scriptures");
     }
+  }
+
+  getPages(baani?: string, page?: number) {
+    page = page ? page : 0;
+    return new Promise((resolve, reject) => {
+      try {
+        if (this.getPageMapping(baani)[page]) {
+
+          this.http.get(`http://sggsonline.com/wp-json/wp/v2/pages/${this.getPageMapping(baani)[page]}`)
+            .subscribe((result: any) => {
+              console.log("result ==> ", result);
+              resolve(result.content.rendered);
+            });
+
+        } else {
+          resolve(false);
+        }
+      } catch (e) {
+        console.log("Profile" + e);
+      }
+    });
   }
 
   readJson(filename) {
@@ -104,5 +141,27 @@ export class GetDataService {
         console.log("Profile" + e);
       }
     });
+  }
+
+  getPageMapping(baani: string) {
+    let mapp = {
+      AasaKiVaar: [
+        1984,
+        1999,
+        2003,
+        2006,
+        2011,
+        2015,
+        2022,
+        2028,
+        2033,
+        2038,
+        2040,
+        2044,
+        2048,
+        2051
+      ]
+    }
+    return mapp[baani];
   }
 }
