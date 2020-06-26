@@ -3,13 +3,9 @@
     <ion-title>Baanis</ion-title>
   </ion-toolbar> -->
   <ion-toolbar class="new-background-color">
-    <ion-buttons *ngIf="selectedBaani && page>0" slot="start" (click)="goToPage(-1)">
-      Previous
-    </ion-buttons>
+    <ion-buttons *ngIf="selectedBaani && page>0" class="cta_np" slot="start" (click)="goToPage(-1)">Previous</ion-buttons>
     <ion-title>{{pageTitle}}</ion-title>
-    <ion-buttons *ngIf="selectedBaani && page<totalPages" slot="end" (click)="goToPage(1)">
-      Next
-    </ion-buttons>
+    <ion-buttons *ngIf="selectedBaani && page<totalPages" class="cta_np" slot="end" (click)="goToPage(1)">Next</ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,32 +18,6 @@
 
   </ion-content>
   <ion-content *ngIf="baaniContent" style="text-align: center">
-    <style>
-      .asideleft {
-        display: none;
-        float: left;
-        width: 0%;
-        box-sizing: border-box;
-        padding: 0;
-      }
-
-      .asideright {
-        /* float: right; */
-        width: 100%;
-        box-sizing: border-box;
-        /* padding: 10px 0px 0px 90px; */
-      }
-    </style>
-
-    <!-- <ion-col size="8" size-sm>
-      <ion-text-center>
-        <span style="text-align: center;" *ngFor="let s of baaniContent.div">
-          <p>{{s.heading}}</p>
-          <p *ngFor="let l of s.lines">{{l["punjabi-text"]}}</p>
-        </span>
-      </ion-text-center>
-    </ion-col>-->
-
     <p [innerHTML]="baaniContent"></p>
     <ion-button (click)="back()" class="search_cta">back to Baanis</ion-button>
   </ion-content>

@@ -10,12 +10,37 @@
 }
 ion-app.android {
     font-family: TradeGothic !important;
-    font-size: 15px;
+    font-size: 15px !important;
     }
 ion-app.ios {
-        font-family: TradeGothic !important;
-        font-size: 15px;
+    font-family: TradeGothic !important;
+    font-size: 15px !important;
 }
+.asideright {
+    font-family: TradeGothic !important;
+    font-size: 15px !important;
+    line-height: 1.8rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .asideleft {
+    font-family: TradeGothic !important;
+    font-size: 15px !important;
+    line-height: 1.8rem;
+    display: none;
+    float: left;
+    width: 0%;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  .cta_np{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 12px;
+  }
 a {
     color: #000;
     line-height: 25px;
