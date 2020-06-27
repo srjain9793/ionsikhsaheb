@@ -9,14 +9,14 @@
   <ion-content class="box" *ngIf="showSearchWidget" style="text-align: center;">
     <ion-input class="searchbox" type="text" placeholder="Enter Searchphrase" [(ngModel)]="searchPhrase"></ion-input>
 
-    <ion-select class="searchbox" placeholder="Search Criteria" [(ngModel)]="searchCriteria" interface="popover">
+    <ion-select class="searchbox" id="selectbx1" placeholder="Search Criteria" [(ngModel)]="searchCriteria" interface="popover">
       <ion-select-option value="">Search Criteria</ion-select-option>
       <ion-select-option value="sc_b">Beginning Word</ion-select-option>
       <ion-select-option value="sc_a">Word Anywhere</ion-select-option>
       <ion-select-option value="sc_p">Phrase Search</ion-select-option>
     </ion-select>
 
-    <ion-select class="searchbox" placeholder="Search Scriptures" [(ngModel)]="searchScripture" interface="popover">
+    <ion-select class="searchbox" id="selectbx2" placeholder="Search Scriptures" [(ngModel)]="searchScripture" interface="popover">
       <ion-select-option value="">Search Scriptures</ion-select-option>
       <!-- <ion-select-option value="asd">Sww</ion-select-option> -->
       <ion-select-option *ngFor=" let baani of scriptureList" [value]="baani.filename">
