@@ -1,7 +1,4 @@
 <ion-header>
-  <!-- <ion-toolbar class="new-background-color">
-    <ion-title>Baanis</ion-title>
-  </ion-toolbar> -->
   <ion-toolbar class="new-background-color">
     <ion-buttons *ngIf="selectedBaani && page>0" class="cta_np" slot="start" (click)="goToPage(-1)">Previous</ion-buttons>
     <ion-title>{{pageTitle}}</ion-title>
@@ -17,7 +14,7 @@
     </p>
 
   </ion-content>
-  <ion-content *ngIf="baaniContent" style="text-align: left">
+  <ion-content *ngIf="baaniContent" style="text-align: left;">
     <p [innerHTML]="baaniContent"></p>
     <ion-button (click)="back()" class="search_cta">back to Baanis</ion-button>
   </ion-content>

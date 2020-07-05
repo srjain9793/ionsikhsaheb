@@ -22,7 +22,6 @@ ion-app.ios {
     line-height: 1.8rem;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 5%;
     padding-right: 5%;
   }
   .asideleft {
@@ -36,6 +35,9 @@ ion-app.ios {
     padding: 0;
   }
 
+  ion-content.md.hydrated p {
+    padding-left: 5% !important;
+  }
   .cta_np{
     color: #000 !important;
     padding-left: 5%;
