@@ -6,7 +6,7 @@
 .search_cta{
     --background: #44270A;
     --color: #fff;
-    --border-radius: 50%;
+    // --border-radius: 50%;
 }
 ion-app.android {
     font-family: TradeGothic !important;
@@ -39,7 +39,7 @@ ion-app.ios {
     padding-left: 5% !important;
   }
   .cta_np{
-    color: #000 !important;
+    // color: #000 !important;
     padding-left: 5%;
     padding-right: 5%;
     font-size: 12px;

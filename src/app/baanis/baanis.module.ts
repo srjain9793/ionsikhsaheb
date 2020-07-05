@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BaanisPageRoutingModule } from './baanis-routing.module';
 
 import { BaanisPage } from './baanis.page';
+import { FilterComponent } from './filter.component'
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { BaanisPage } from './baanis.page';
     IonicModule,
     BaanisPageRoutingModule
   ],
-  declarations: [BaanisPage]
+  declarations: [BaanisPage, FilterComponent]
 })
-export class BaanisPageModule {}
+export class BaanisPageModule { }
