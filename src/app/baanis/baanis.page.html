@@ -10,14 +10,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-content *ngIf="!baaniContent" style="text-align: center">
+  <ion-content *ngIf="!baaniContent" style="text-align: left;">
 
     <p *ngFor=" let baani of baanisList" (click)="getContent(baani.filename)">
       {{baani.heading}}
     </p>
 
   </ion-content>
-  <ion-content *ngIf="baaniContent" style="text-align: center">
+  <ion-content *ngIf="baaniContent" style="text-align: left">
     <p [innerHTML]="baaniContent"></p>
     <ion-button (click)="back()" class="search_cta">back to Baanis</ion-button>
   </ion-content>
