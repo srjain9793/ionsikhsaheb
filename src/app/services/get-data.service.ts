@@ -7,11 +7,15 @@ import { LoadingController } from '@ionic/angular';
 })
 export class GetDataService {
 
+  loading: any;
+  tabClicked = false;
+
   constructor(private http: HttpClient, public loadingController: LoadingController) {
     this.http = http;
     // this.readJson("");
+    this.tabClicked = true;
   }
-  loading: any;
+
   async presentLoading() {
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
@@ -95,10 +99,16 @@ export class GetDataService {
     return filterData;
   }
 
-  async getBaanisContent(baani?: any, page?: number) {
+  async getBaanisContent(url?: string, baani?: any, page?: number) {
     if (baani) {
       await this.presentLoading();
-      let data = await this.getPages(baani, page);
+      let data;
+      try {
+
+        data = await this.getPages(url, baani, page);
+      } catch (error) {
+        alert("Some Error Occurred! Page not available");
+      }
       this.loading.dismiss();
       return data;
 
@@ -107,21 +117,38 @@ export class GetDataService {
     }
   }
 
-  getPages(baani?: string, page?: number) {
+  // getPagesOLD(baani?: string, page?: number) {
+  //   page = page ? page : 0;
+  //   return new Promise((resolve, reject) => {
+  //     try {
+  //       if (this.getPageMapping(baani)[page]) {
+
+  //         this.http.get(`http://sggsonline.com/wp-json/wp/v2/pages/${this.getPageMapping(baani)[page]}`)
+  //           .subscribe((result: any) => {
+  //             console.log("result ==> ", result);
+  //             resolve(result.content.rendered);
+  //           });
+
+  //       } else {
+  //         resolve(false);
+  //       }
+  //     } catch (e) {
+  //       console.log("Profile" + e);
+  //     }
+  //   });
+  // }
+
+  getPages(url, baani?: string, page?: number) {
     page = page ? page : 0;
     return new Promise((resolve, reject) => {
       try {
-        if (this.getPageMapping(baani)[page]) {
 
-          this.http.get(`http://sggsonline.com/wp-json/wp/v2/pages/${this.getPageMapping(baani)[page]}`)
-            .subscribe((result: any) => {
-              console.log("result ==> ", result);
-              resolve(result.content.rendered);
-            });
+        this.http.get(url.replace("{pagenumber}", page))
+          .subscribe(
+            (result: any) => { console.log('success', result); resolve(result.content.rendered); },
+            (error: any) => { console.log('oops', error); reject(); }
+          )
 
-        } else {
-          resolve(false);
-        }
       } catch (e) {
         console.log("Profile" + e);
       }
@@ -143,25 +170,38 @@ export class GetDataService {
     });
   }
 
-  getPageMapping(baani: string) {
-    let mapp = {
-      AasaKiVaar: [
-        1984,
-        1999,
-        2003,
-        2006,
-        2011,
-        2015,
-        2022,
-        2028,
-        2033,
-        2038,
-        2040,
-        2044,
-        2048,
-        2051
-      ]
-    }
-    return mapp[baani];
+
+
+  getTabClick() {
+    console.log("tab click get serice");
+    return this.tabClicked;
   }
+
+  setTabClick(t) {
+    console.log("tab click set serice");
+    this.tabClicked = t;
+    return t;
+  }
+
+  // getPageMapping(baani: string) {
+  //   let mapp = {
+  //     AasaKiVaar: [
+  //       1984,
+  //       1999,
+  //       2003,
+  //       2006,
+  //       2011,
+  //       2015,
+  //       2022,
+  //       2028,
+  //       2033,
+  //       2038,
+  //       2040,
+  //       2044,
+  //       2048,
+  //       2051
+  //     ]
+  //   }
+  //   return mapp[baani];
+  // }
 }

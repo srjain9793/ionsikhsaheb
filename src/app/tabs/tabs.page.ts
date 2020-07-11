@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
-import { File } from '@ionic-native/file/ngx';
 import { Platform } from '@ionic/angular';
+import { GetDataService } from '../services/get-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  providers: [File]
+  providers: [GetDataService],
 })
 export class TabsPage {
-  constructor(private file: File, private platform: Platform) {
+  constructor(private getDataService: GetDataService, private platform: Platform, private router: Router) {
     console.log(platform.platforms());
-    if (platform.is('mobile') && !  platform.is('mobileweb')) {
-      this.checkDir();
-    }
   }
 
-  checkDir() {
-    console.log("this.file.dataDirectory-->", this.file.dataDirectory);
-    this.file.checkDir('/home/shailesh/', 'Documents')
-      .then(_ => console.log('Directory exists'))
-      .catch(err => console.log("Directory doesn't exist"));
+  getSelected() {
+    console.log("tab clicked");
+    this.getDataService.setTabClick(true);
+    this.router.navigate(['/']);
   }
 }

@@ -1,7 +1,7 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home" >
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
@@ -16,10 +16,12 @@
       <ion-label>Search</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="baanis">
+    <ion-tab-button tab="baanis" (click)="getSelected()">
       <ion-icon name="bookmarks-outline"></ion-icon>
       <ion-label>Baanis</ion-label>
     </ion-tab-button>
+
+    <ion-tab tabIcon="md-flame" [root]="baanis"></ion-tab>
 
     <ion-tab-button tab="more">
       <ion-icon name="menu-outline"></ion-icon>
