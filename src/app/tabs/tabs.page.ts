@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { GetDataService } from '../services/get-data.service';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-tabs',
@@ -12,6 +14,10 @@ import { Router } from '@angular/router';
 export class TabsPage {
   constructor(private getDataService: GetDataService, private platform: Platform, private router: Router) {
     console.log(platform.platforms());
+    this.platform.backButton.subscribeWithPriority(5, () => {
+      console.log('Handler was called!');
+      App.exitApp();
+    });
   }
 
   getSelected() {
