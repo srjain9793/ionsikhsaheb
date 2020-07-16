@@ -27,14 +27,13 @@
 </ion-content>
 
 
-<ion-content *ngIf="!baaniContent" style="text-align: left;">
-
+<ion-content *ngIf="!baaniContent" style="text-align: left;" class="bgcolor">
   <p *ngFor=" let baani of baanisList" (click)="getContent(baani.url, baani.filename, baani.mapping)">
-    {{baani.heading}}
+    * {{baani.heading}}
   </p>
 
 </ion-content>
 <ion-content *ngIf="baaniContent" style="text-align: left;">
-  <p [innerHTML]="baaniContent"></p>
+   <p [innerHTML]="baaniContent"></p>
   <ion-button (click)="back()" class="search_cta">back to Baanis</ion-button>
 </ion-content>

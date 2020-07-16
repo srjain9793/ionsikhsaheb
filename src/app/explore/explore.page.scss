@@ -3,10 +3,24 @@
     --color: #fff;
     text-align: center;
 }
+
+ion-content.md.hydrated p {
+    padding-left: 1.2% !important;
+    padding-right: 1% !important;
+    font-weight: 500;
+    color: black;
+}
+
+ion-content.explorebg.md.hydrated {
+        --background: url('/assets/imgs/white.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+}
 ion-app.android {
     font-family: TradeGothic !important;
     font-size: 15px;
-    }
+}
 ion-app.ios {
         font-family: TradeGothic !important;
         font-size: 15px;

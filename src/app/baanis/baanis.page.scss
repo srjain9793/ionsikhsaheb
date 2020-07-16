@@ -36,7 +36,17 @@ ion-app.ios {
   }
 
   ion-content.md.hydrated p {
-    padding-left: 5% !important;
+    padding-left: 1.2% !important;
+    padding-right: 1% !important;
+    font-weight: 500;
+    color: black;
+  }
+
+  ion-content.bgcolor.md.hydrated{
+    --background: url('/assets/imgs/white.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
   }
   .cta_np{
     // color: #000 !important;
